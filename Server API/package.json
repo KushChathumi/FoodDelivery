@@ -1,0 +1,17 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Server Side API - Food Delivery Web Site",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node Express",
+    "express API",
+    "npm",
+    "MERN Stack"
+  ],
+  "author": "Kushani Abeysinghe",
+  "license": "ISC"
+}
