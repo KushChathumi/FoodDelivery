@@ -11,7 +11,10 @@ app.use(express.json());
 
 //create connection
 mongoose
-    .connect("mongodb://localhost/TasteBudsdb")
+    .connect("mongodb://localhost/TasteBudsdb" , { 
+        useNewUrlParser: true ,
+        useUnifiedTopology: true
+    })
     .then(() => console.log("connected to db successfully ...!"))
     .catch(err => 
         console.log("errors has occred while connecting to DB : ",err)
