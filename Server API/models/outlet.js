@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const outletSchema = new mongoose.Schema({
     outletID : {
-        type : Number ,
+        type : Number,
+        unique: true,
         require : true,
     },
 
