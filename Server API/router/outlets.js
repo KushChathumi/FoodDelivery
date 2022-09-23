@@ -12,7 +12,9 @@ const Outlet = require("../models/outlet");
 router.get("/", async(req,res) => {
    try{
         let outlets = await Outlet.find();
-        return res.send(outlets);
+        return res
+            .status(200)
+            .send(outlets);
    } catch(ex){
     return res.status(500).send("Error", ex.message);
    }
@@ -23,17 +25,23 @@ router.get("/:id", async(req,res) => {
     let outlet = await Outlet.findById(requestedOutlet); 
     if(!outlet){
         return res
-            .status(400)
+            .status(404)
             .send("Outlet you are looking for does not exist.")
     }
-    return res.send(outlet);
+    return res
+        .status(200)
+        .send(outlet);
 });
 
 router.post("/", async(req,res) =>{
-    if(!req.body.name || !req.body.address || !req.body.picture ){
-        return res
+    if(!req.body.outletID || !req.body.name || !req.body.address || !req.body.picture ){
+        return res 
         .status(400)
         .send("Please fill the required flieds")
+    }else if (req.body.name.length <3 || req.body.address.length <5 ){
+        return res
+            .status(400)
+            .send("Please Provide the Correct details.")
     }
     let newOutlets = new Outlet ({
         outletID : req.body.outletID,
@@ -44,9 +52,13 @@ router.post("/", async(req,res) =>{
     });
     try{
         newOutlets = await newOutlets.save();
-        return res.send(newOutlets);    
+        return res
+            .status(200)
+            .send(newOutlets);    
    } catch(ex){
-    return res.status(500).send("Error", ex.message);
+    return res
+        .status(500)
+        .send("Error", ex.message);
    }
 });
 
@@ -59,9 +71,13 @@ router.delete("/:id", async(req,res) => {
                 .status(400)
                 .send("Food you are looking for does not exist")
         }
-        res.send(outlet);
+        return res
+            .status(200)
+            .send(outlet);
     }catch(ex){
-        return res.status(500).send(ex.message);
+        return res
+            .status(500)
+            .send(ex.message);
     }
 });
 
@@ -77,7 +93,9 @@ router.put("/:id", async(req,res)=>{
 
     outlet.set({name : req.body.name});
     outlet = await outlet.save()
-    return res.send(outlet)
+    return res
+        .status(200)
+        .send(outlet)
  });
 
 module.exports =  router

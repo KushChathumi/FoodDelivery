@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const outletSchema = new mongoose.Schema({
     outletID : {
         type : Number,
-        unique: true,
         require : true,
     },
 
@@ -12,7 +11,7 @@ const outletSchema = new mongoose.Schema({
         type : String,
         require : true,
         minlength: 3,
-        maxlength: 50
+        maxlength: 200
     },
 
     address : {
