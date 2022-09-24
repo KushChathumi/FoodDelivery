@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose  = require("mongoose");
 const authentication = require("./middleware/Authentication");
+const dotenv = require('dotenv').config()
 const foods = require("./router/foods");
 const home = require("./router/home");
 const outlet = require("./router/outlets");
+const user = require("./router/users");
+const signin = require("./router/signin");
 const app = express();
 const PORT = 5000;
 
@@ -22,10 +25,12 @@ mongoose
 
 //Middleware
 app.use(authentication)
-app.use("/api/foods", foods);
-app.use("/", home);
-app.use("/api/outlet", outlet);
 
+app.use("/", home);
+app.use("/api/outlets", outlet);
+app.use("/api/foods", foods);
+app.use("/api/users", user);
+app.use("/api/login", signin);
 
 
 app.listen(PORT, () => {
