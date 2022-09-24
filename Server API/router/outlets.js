@@ -38,7 +38,7 @@ router.post("/", async(req,res) =>{
         return res 
         .status(400)
         .send("Please fill the required flieds")
-    }else if (req.body.name.length <3 || req.body.address.length <5 ){
+    }else if (req.body.name.length <3 || req.body.description.length <5 ){
         return res
             .status(400)
             .send("Please Provide the Correct details.")

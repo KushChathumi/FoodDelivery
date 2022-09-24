@@ -22,11 +22,14 @@ const foodSchema = new mongoose.Schema({
     price : {
         type : Number ,
         require : true,
+        minlength: 3,
+        maxlength: 50
     },
 
     description : {
         type: String,
-        required: true
+        required: true,
+        minlength: 5,
     },
 
     rating : {
