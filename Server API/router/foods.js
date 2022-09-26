@@ -23,6 +23,10 @@ router.get("/:id", async(req,res)=>{
             return res
                 .status(404)
                 .send("Food you are looking for does not exist")
+           } else if (isNaN(food)){
+                return res
+                .status(404)
+                .send("Food you are looking for does not exist")
            }
            return res
                 .status(200)
@@ -88,17 +92,18 @@ router.put("/:id", async(req,res)=>{
 
 router.delete("/:id", async(req,res) =>{
     let requestedID = req.params.id;
+    let foodID = await Food.find({"foodID":requestedID});
     try{
-        let food = await Food.findByIdAndDelete(requestedID);
+        let food = await Food.findByIdAndDelete(foodID);
         if(!food){
             return res
-                .status(404)
+                //.status(404)
                 .send("Food you are looking for does not exist")
         }
         res.send(outlet);
     } catch(ex){
         return res
-            .status(500)
+            //.status(500)
             .send("Error : ", ex);
     }
 });
