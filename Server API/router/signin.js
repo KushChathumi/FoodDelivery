@@ -11,6 +11,7 @@ router.post('/', async(req,res)=>{
     const user = await User.findOne({ email })
 
     if(user && (await bcrypt.compare(password, user.password))){
+        console.log(user);
         return res 
             .status(200)
             .json({
@@ -19,6 +20,7 @@ router.post('/', async(req,res)=>{
                 email: user.email,
                 isAdmin : user.isAdmin,
                 token : generateToken(user._id)
+                
         })
     }else {
         return res
