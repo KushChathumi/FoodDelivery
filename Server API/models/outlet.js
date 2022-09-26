@@ -28,7 +28,12 @@ const outletSchema = new mongoose.Schema({
     picture : {
         type: String,
         required: true
-    }
+    },
+
+    date: {
+        type : Date,
+        default : Date.now
+    },
 });
 
 module.exports = mongoose.model("Outlet",outletSchema);

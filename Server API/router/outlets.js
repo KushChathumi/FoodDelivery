@@ -22,7 +22,7 @@ router.get("/", async(req,res) => {
 
 router.get("/:id", async(req,res) => {
     let requestedOutlet = req.params.id;
-    let outlet = await Outlet.findById(requestedOutlet); 
+    let outlet = await Outlet.find({"outletID":requestedOutlet}); 
     if(!outlet){
         return res
             .status(404)
@@ -38,11 +38,12 @@ router.post("/", async(req,res) =>{
         return res 
         .status(400)
         .send("Please fill the required flieds")
-    }else if (req.body.name.length <3 || req.body.description.length <5 ){
-        return res
-            .status(400)
-            .send("Please Provide the Correct details.")
     }
+    else if(req.body.name.length <3 || req.body.address.length < 5){
+        return res
+        .status(400)
+        .send("Please Provide the Correct details.")
+    } 
     let newOutlets = new Outlet ({
         outletID : req.body.outletID,
         name : req.body.name,
@@ -64,8 +65,9 @@ router.post("/", async(req,res) =>{
 
 router.delete("/:id", async(req,res) => {
     let requestedOutlet = req.params.id;
+    let outletID = await Outlet.find({"outletID" : requestedOutlet})
     try{
-        let outlet = await Outlet.findByIdAndDelete(requestedOutlet); 
+        let outlet = await Outlet.findByIdAndDelete(outletID); 
         if(!outlet){
             return res
                 .status(400)
@@ -73,7 +75,7 @@ router.delete("/:id", async(req,res) => {
         }
         return res
             .status(200)
-            .send(outlet);
+            .send(`Successfully removed : ${outletID}`);
     }catch(ex){
         return res
             .status(500)
