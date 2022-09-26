@@ -7,6 +7,7 @@ const home = require("./router/home");
 const outlet = require("./router/outlets");
 const user = require("./router/users");
 const signin = require("./router/signin");
+const order = require("./router/orders");
 const app = express();
 const PORT = 5000;
 
@@ -25,12 +26,13 @@ mongoose
 
 //Middleware
 app.use(authentication)
-
+ 
 app.use("/", home);
 app.use("/api/outlets", outlet);
 app.use("/api/foods", foods);
 app.use("/api/users", user);
 app.use("/api/login", signin);
+app.use("/api/orders", order);
 
 
 app.listen(PORT, () => {

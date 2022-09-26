@@ -1,37 +1,46 @@
 const mongoose = require("mongoose");
-const user = require("./user");
 
 const orderSchema = new mongoose.Schema({
+    Items : [{
+        foodID : {
+            type : mongoose.Schema.Types.ObjectId,
+            require : true,
+            ref : 'Food',
+        },
     
-    user : {
+        quntity : {
+            type : Number ,
+            require : true,
+        },
+    
+        price : {
+            type : Number,
+            default: 0,
+        },
+    
+        imagePath: {
+            type: String,
+        },
+    }],
+    totalQty: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
+
+      totalCost: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
+
+      user : {
         type : mongoose.Schema.Types.ObjectId,
         require : true,
         ref : 'User',
     },
 
-    foodID : {
-        type : mongoose.Schema.Types.ObjectId,
-        require : true,
-        ref : 'Food',
-    },
-
-    quntity : {
-        type : Number ,
-        require : true,
-    },
-
-    totalAmount : {
-        type : Number 
-    },
-
-    address : {
-        type : String,
-        require : true,
-        minlength: 5,
-        maxlength: 50
-    },
-
-    date: {
+      createdDate: {
         type : Date,
         default : Date.now
     },
