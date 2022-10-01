@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose  = require("mongoose");
+const cors = require("cors")
 const authentication = require("./middleware/Authentication");
 const dotenv = require('dotenv').config()
 const foods = require("./router/foods");
@@ -26,6 +27,7 @@ mongoose
 
 //Middleware
 app.use(authentication)
+app.use(cors());
  
 app.use("/", home);
 app.use("/api/outlets", outlet);

@@ -7,50 +7,52 @@
 import React, { Component } from "react";
 
  class Outlet extends Component{
-    state = {
-        outletId : 1000,
-        outletName : this.props.name,
-        foodName : ["Cheese Burgur","Vegi Burger","Chichen Burgur"] ,
-        likeCount : this.props.likeCount
-    };
+    state = {};
     isOutlet(){
         return this.state.outletId >10 ? "It is an Outlet" : "It is not an oulet";
     }
-    showFood (){
-        if(this.state.foodName.length === 0) return <p>No Foods available</p>;
-        return this.state.foodName.map((foodName,index) => (
-        <li key={index}>{foodName}</li>
-        ));
-    }
+    // showFood (){
+    //     if(this.state.foodName.length === 0) return <p>No Foods available</p>;
+    //     return this.state.foodName.map((foodName,index) => (
+    //     <li key={index}>{foodName}</li>
+    //     ));
+    //}
     likeOutlet = () => {
         this.setState({likeCount : this.state.likeCount + 1})
         console.log("You have liked Outlet")
     }
     render(){
         return (
-                <div className="card" style={{width: "18rem"}}>
+            <div className="card" style={{width: "18rem" ,height: "30rem" , marginTop:"20px"}}  >
                 <img 
-                    src="http://bizenglish.adaderana.lk/wp-content/uploads/Ja-Ela-opening-Composite-1A.jpg"    
+                    style = {{height : "15rem"}}
+                    src={this.props.outlet.picture}    
                     className="card-img-top" 
                     alt="..."
                 />
                 <div className="card-body">
-                    <h5 className="card-title">{this.state.outletName}</h5>
+                    <h5 className="card-title">{this.props.outlet.name}</h5>
                     <p className="card-text">
                         Some quick example text to build on the card title and 
                         make up the bulk of the card's content.
                     </p>
-                    <ul>
-                           {this.showFood()}
-                        </ul>
-                    <button className="btn btn-primary" onClick={this.likeOutlet}>
-                        Like 
-                        <span className="badge bg-secondary"> 
-                            {this.state.likeCount}
-                        </span>
-                    </button>
+                    <br/>
+                    <div className="container">
+                        <div className="raw">
+                            {" "}
+                            <button className="btn btn-primary" >
+                                 View 
+                            </button> {" "}
+                            <button className="btn btn-success" >
+                                 Update
+                            </button> {" "}
+                            <button className="btn btn-danger" >
+                                Delete
+                            </button> {" "}
+                        </div>
+                    </div>   
                 </div>
-                </div>
+            </div>
         );
     }
 
