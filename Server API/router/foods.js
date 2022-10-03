@@ -11,23 +11,20 @@ router.get("/", async(req,res)=>{
     } catch (ex){
         return res
             .status(500)
-            .send("Error : ", ex);
+            .send("Error : ", ex.message);
     }
 });
 
 router.get("/:id", async(req,res)=>{
     let requestedID = req.params.id;
-    let food = await Food.find({"outletID":requestedID});
+    console.log(requestedID)
+    let food = await Food.find({"outletID" : requestedID}); 
     try{
         if(!food) {
             return res
                 .status(404)
                 .send("Food you are looking for does not exist")
-           } else if (isNaN(food)){
-                return res
-                .status(404)
-                .send("Food you are looking for does not exist")
-           }
+           } 
            return res
                 .status(200)
                 .send(food)
@@ -37,6 +34,18 @@ router.get("/:id", async(req,res)=>{
             .send("Error : ", ex);
     }
 });
+// let requestedfood = req.params.id;
+// let food = await Food.find({"outletID":requestedfood}); 
+// if(!food){
+//     return res
+//         .status(404)
+//         .send("food you are looking for does not exist.")
+// }
+// return res
+//     .status(200)
+//     .send(food);
+// });
+
 
 router.put("/:id", async(req,res)=>{
     let requestedID = req.params.id;

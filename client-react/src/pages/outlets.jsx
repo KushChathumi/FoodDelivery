@@ -15,7 +15,11 @@ class Outlets extends Component{
                 <div className="row">
                     {this.state.allOutlets.map(outlet => (
                         <div key={outlet.id} className="col">
-                            <Outlet key={outlet.id} outlet= {outlet} />
+                            <Outlet 
+                                key={outlet.id} 
+                                outlet= {outlet} 
+                                onDelete = {() => this.deleteOutlet(outlet.id)}
+                            />
                         </div>
                     ))}
                 </div> 
@@ -36,6 +40,12 @@ class Outlets extends Component{
             };
         });
         this.setState({allOutlets : oultets})
+    }
+
+    async deleteOutlet(id){
+        await axios.delete(`http://localhost:5000/api/outlets/${id}`)
+        let updatedOutlet = this.state.allOutlets.filter(outlet => outlet.id !== id)
+        this.setState({allOutlets : updatedOutlet });
     }
 }
 

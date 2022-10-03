@@ -23,7 +23,7 @@ import React, { Component } from "react";
     }
     render(){
         return (
-            <div className="card" style={{width: "18rem" ,height: "30rem" , marginTop:"20px"}}  >
+            <div className="card" style={{width: "18rem" ,height: "28rem" , marginTop:"20px"}}  >
                 <img 
                     style = {{height : "15rem"}}
                     src={this.props.outlet.picture}    
@@ -32,10 +32,12 @@ import React, { Component } from "react";
                 />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.outlet.name}</h5>
-                    <p className="card-text">
-                        Some quick example text to build on the card title and 
-                        make up the bulk of the card's content.
-                    </p>
+                        Adress : {this.props.outlet.address}
+                        <br/>
+                        Loaction : 
+                        <br/>
+                        Rating : {this.props.outlet.rating}
+                    <br/>
                     <br/>
                     <div className="container">
                         <div className="raw">
@@ -43,11 +45,11 @@ import React, { Component } from "react";
                             <button className="btn btn-primary" >
                                  View 
                             </button> {" "}
-                            <button className="btn btn-success" >
-                                 Update
-                            </button> {" "}
-                            <button className="btn btn-danger" >
+                            <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete
+                            </button> {" "}
+                            <button className="btn btn-info">
+                                Favorite
                             </button> {" "}
                         </div>
                     </div>   

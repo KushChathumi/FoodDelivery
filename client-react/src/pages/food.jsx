@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import Navigation from './navigation'
 
 class Food extends Component{
     state = {};
     render(){
         return(
-            <div className="card" style={{width: "18rem" ,height: "30rem" , marginTop:"20px"}}  >
+                <div className="card" style={{width: "18rem" ,height: "30rem" , marginTop:"20px"}}  >
                 <img 
                     style = {{height : "15rem"}}
                     src = {this.props.food.picture}

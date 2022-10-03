@@ -36,6 +36,25 @@ class Foods extends Component{
         });
         this.setState({allFoods : foods})
     } 
+
+    async getSingleOutlet(id){
+        const { data } = await axios.get(`http://localhost:5000/api/foods${id}`);
+        let foods = data.map(( food ) => {
+            return {
+                id : food._id,
+                outletID : food.outletID,
+                foodID : food.foodID,
+                name : food.name,
+                price : food.price,
+                description : food.description,
+                rating : food.rating,
+                picture: food.picture
+            };
+        });
+        this.setState({allFoods : foods})
+    } 
+
+
 }
 
 export default Foods;

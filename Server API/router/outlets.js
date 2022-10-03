@@ -65,9 +65,9 @@ router.post("/", async(req,res) =>{
 
 router.delete("/:id", async(req,res) => {
     let requestedOutlet = req.params.id;
-    let outletID = await Outlet.find({"outletID" : requestedOutlet})
+    //let outletID = await Outlet.find({"outletID" : requestedOutlet})
     try{
-        let outlet = await Outlet.findByIdAndDelete(outletID); 
+        let outlet = await Outlet.findByIdAndDelete(requestedOutlet); 
         if(!outlet){
             return res
                 .status(400)
@@ -75,7 +75,7 @@ router.delete("/:id", async(req,res) => {
         }
         return res
             .status(200)
-            .send(`Successfully removed : ${outletID}`);
+            .send(`Successfully removed : ${requestedOutlet}`);
     }catch(ex){
         return res
             .status(500)
