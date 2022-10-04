@@ -3,6 +3,7 @@
 
 import React, { Component } from "react";
 import Outlet from './outlet'
+import Food from './food'
 import axios from "axios";
 
 class Outlets extends Component{
@@ -47,6 +48,6 @@ class Outlets extends Component{
         let updatedOutlet = this.state.allOutlets.filter(outlet => outlet.id !== id)
         this.setState({allOutlets : updatedOutlet });
     }
-}
+} 
 
 export default Outlets;

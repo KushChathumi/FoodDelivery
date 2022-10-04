@@ -12,7 +12,11 @@ class Foods extends Component{
                 <div className="row">
                     {this.state.allFoods.map( food => (
                         <div key={food.id} className="col">
-                            <Food key={food.id} food = {food} />
+                            <Food 
+                                key={food.id} 
+                                food = {food} 
+                                onView = {() => this.getSingleOutlet(food.id)}
+                            />
                         </div>
                     ))}
                 </div>

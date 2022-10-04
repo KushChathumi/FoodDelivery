@@ -2,10 +2,12 @@ import React from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Outlets from './pages/outlets';
 import Food from './pages/foods';
-// import Navigation from './components/navigation';
-// import DashBoard from "./components/dashboard";
 import NavBar from './components/navbar';
 import Home from './components/home'
+import SignIn from './components/signin';
+import SignUp from './components/signUp'
+import Order from './pages/orders'
+import Wishlist from './pages/wishlists'
 
 function App() {
   return (
@@ -13,24 +15,18 @@ function App() {
       <Router>
         <NavBar/>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/outlets" element={<Outlets />} />
+            <Route path="/" element={<Outlets />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/foods" element = {<Food />} />
+            <Route path="/order" element = {<Order />} />
+            <Route path="/wishlist" element = {<Wishlist />} />
+
           </Routes>
       </Router>
     </div>
   );
 }
-
-
-// function App(){
-//   return(
-//     <div className="App">
-//       <BrowserRouter>
-//         <SiteRoutes/>
-//       </BrowserRouter>
-//     </div>
-//   )
-// }
 
 export default App;

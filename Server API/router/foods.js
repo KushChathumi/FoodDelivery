@@ -16,9 +16,9 @@ router.get("/", async(req,res)=>{
 });
 
 router.get("/:id", async(req,res)=>{
-    let requestedID = req.params.id;
-    console.log(requestedID)
-    let food = await Food.find({"outletID" : requestedID}); 
+    let food = req.params.id;
+    console.log(food)
+    //let food = await Food.find({"outletID" : requestedID}); 
     try{
         if(!food) {
             return res

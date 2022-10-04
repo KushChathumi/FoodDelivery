@@ -2,15 +2,16 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-//const asyncHandler = require ("express-async-handler")
 const User = require("../models/user");
 
 router.post('/', async(req,res)=>{
-    const { email, password } = req.body
+    //const { email, password } = req.body
+    let user = await User.findOne({ email: req.body.email });
+    console.log(req.body.email, req.body.password);
     //check for user email
-    const user = await User.findOne({ email })
-
-    if(user && (await bcrypt.compare(password, user.password))){
+    //const user = await User.findOne({ email })
+    console.log(req.body.email, req.body.password);
+    if(user && (await bcrypt.compare(req.body.password, user.password))){
         console.log(user);
         return res 
             .status(200)
@@ -22,10 +23,11 @@ router.post('/', async(req,res)=>{
                 token : generateToken(user._id)
                 
         })
+        console.log(name,email)
     }else {
         return res
             .status(400)
-            .send("Invalid  credentials.")
+            .send({ message:"Invalid  credentials."})
     }
 });
  
