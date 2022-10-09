@@ -6,10 +6,10 @@ const foodSchema = new mongoose.Schema({
         type : Number ,
     },
 
-    foodID : {
-        type : Number ,
-        require : true,
-    },
+    // foodID : {
+    //     type : Number ,
+    //     require : true,
+    // },
 
     name : {
         type : String,
@@ -21,8 +21,7 @@ const foodSchema = new mongoose.Schema({
     price : {
         type : Number ,
         require : true,
-        minlength: 3,
-        maxlength: 50
+
     },
 
     description : {

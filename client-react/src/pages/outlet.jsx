@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
     }
     render(){
         return (
-            <div className="card" style={{width: "20rem" ,height: "28rem" , marginTop:"20px"}}  >
+            <div className="card" style={{width: "18rem" ,height: "28rem" , marginTop:"20px"}}  >
                 <img 
                     style = {{height : "15rem"}}
                     src={this.props.outlet.picture}    
@@ -35,19 +35,13 @@ import { Link } from "react-router-dom";
                     <h5 className="card-title">{this.props.outlet.name}</h5>
                         Adress : {this.props.outlet.address}
                         <br/>
-                        Loaction : 
-                        <br/>
                         Rating : {this.props.outlet.rating}
                     <br/>
-                    <br/>
-                    <div className="container" style={{ padding : "0px"}}>
+                    <div className="container" style={{ padding : "15px"}}>
                         <div className="raw">
                             <Link to="/foods" className="btn btn-primary" onClick={this.props.onView} >
                                 View
                             </Link>{" "}
-                            <button className="btn btn-success">
-                                Order
-                            </button> {" "}
                             <button className="btn btn-warning">
                                 Favorite
                             </button> {" "}

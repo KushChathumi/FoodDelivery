@@ -16,7 +16,7 @@ const Navigation = () => {
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
-                    <Link to ="/home" className="navbar-brand" >TasteBuds</Link>
+                    <span class="navbar-brand mb-0 h1">TasteBuds</span>  
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -26,13 +26,13 @@ const Navigation = () => {
                                 <Link to ="/" className="nav-link active" aria-current="page">Outlet</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to ="/order" className="nav-link active" aria-current="page">Order</Link>
+                                <Link to ="/foods" className="nav-link active" aria-current="page">Food</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to ="/wishlist" className="nav-link active" aria-current="page">Favorite</Link>
+                                <Link to ="/addoutlet" className="nav-link active" aria-current="page">Add Outlet</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to ="" className="nav-link active" aria-current="page">Customers</Link>
+                                <Link to ="addfood" className="nav-link active" aria-current="page">Add Food</Link>
                             </li>
                         </ul>
                         <div className="float-end">
@@ -54,7 +54,7 @@ const Navigation = () => {
                 <img src="https://www.houstonfood2u.com/images/logos/original-logos-500.png"
                     alt="" width="50" height="50" className="d-inline-block align-text-top"/>
                 <div className="container-fluid">
-                    <span class="navbar-brand mb-0 h1">Navbar</span>   
+                    <span class="navbar-brand mb-0 h1">TasteBuds</span>   
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -26,7 +26,7 @@ router.get("/:id", async(req,res) => {
     if(!outlet){
         return res
             .status(404)
-            .send("Outlet you are looking for does not exist.")
+            .send({ message:"Outlet you are looking for does not exist."})
     }
     return res
         .status(200)
@@ -34,16 +34,23 @@ router.get("/:id", async(req,res) => {
 });
 
 router.post("/", async(req,res) =>{
+    let id =  req.body.outletID
+    let outletID = await Outlet.findOne({id })
     if(!req.body.outletID || !req.body.name || !req.body.address || !req.body.picture ){
         return res 
         .status(400)
-        .send("Please fill the required flieds")
+        .send({ message:"Please fill the required flieds"})
     }
     else if(req.body.name.length <3 || req.body.address.length < 5){
         return res
         .status(400)
-        .send("Please Provide the Correct details.")
+        .send({ message: "Please Provide the Correct details."})
     } 
+    if(outletID){
+        return res  
+            .status(400)
+            .send({ message: "Outlet ID already exisit."})
+    }
     let newOutlets = new Outlet ({
         outletID : req.body.outletID,
         name : req.body.name,
@@ -75,7 +82,7 @@ router.delete("/:id", async(req,res) => {
         }
         return res
             .status(200)
-            .send(`Successfully removed : ${requestedOutlet}`);
+            .send({ message: "Successfully removed"});
     }catch(ex){
         return res
             .status(500)
@@ -90,7 +97,7 @@ router.put("/:id", async(req,res)=>{
     if(!outlet) {
      return res
         .status(404)
-        .send("Food you are looking for does not exist")
+        .send({ message:"Food you are looking for does not exist"})
     }
 
     outlet.set({name : req.body.name});

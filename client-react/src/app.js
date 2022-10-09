@@ -6,8 +6,10 @@ import NavBar from './components/navbar';
 import Home from './components/home'
 import SignIn from './components/signin';
 import SignUp from './components/signUp'
-import Order from './pages/orders'
-import Wishlist from './pages/wishlists'
+import Order from './pages/orders';
+import Wishlist from './pages/wishlists';
+import AddOutlet from './pages/createOutlet';
+import AddFood from './pages/createFood'
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
             <Route path="/foods" element = {<Food />} />
             <Route path="/order" element = {<Order />} />
             <Route path="/wishlist" element = {<Wishlist />} />
-
+            <Route path="/addoutlet" element = {<AddOutlet />} />
+            <Route path="/addfood" element = {<AddFood />} />
           </Routes>
       </Router>
     </div>
