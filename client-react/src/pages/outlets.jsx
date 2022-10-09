@@ -3,7 +3,6 @@
 
 import React, { Component } from "react";
 import Outlet from './outlet'
-import Food from './food'
 import axios from "axios";
 
 class Outlets extends Component{
@@ -20,6 +19,7 @@ class Outlets extends Component{
                                 key={outlet.id} 
                                 outlet= {outlet} 
                                 onDelete = {() => this.deleteOutlet(outlet.id)}
+                                onView = {() => this.viewOneOutlet(outlet.id)}
                             />
                         </div>
                     ))}
@@ -47,6 +47,12 @@ class Outlets extends Component{
         await axios.delete(`http://localhost:5000/api/outlets/${id}`)
         let updatedOutlet = this.state.allOutlets.filter(outlet => outlet.id !== id)
         this.setState({allOutlets : updatedOutlet });
+    }
+
+    async viewOneOutlet(id){
+        await axios.get(`http://localhost:5000/api/outlets/${id}`)
+        let viewOutlet = this.state.allOutlets.filter(outlet => outlet.id === id)
+        this.setState({allOutlets : viewOutlet });
     }
 } 
 

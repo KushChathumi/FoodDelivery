@@ -20,9 +20,10 @@ router.get("/", async(req,res) => {
    }
 });
 
+
 router.get("/:id", async(req,res) => {
     let requestedOutlet = req.params.id;
-    let outlet = await Outlet.find({"outletID":requestedOutlet}); 
+    let outlet = await Outlet.findById(requestedOutlet); 
     if(!outlet){
         return res
             .status(404)
