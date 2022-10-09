@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const foodSchema = new mongoose.Schema({
     outletID : {
-        type : Number ,
+        type : String ,
     },
 
     // foodID : {

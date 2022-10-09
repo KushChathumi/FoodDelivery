@@ -47,6 +47,9 @@ import { Link } from "react-router-dom";
                             </button> {" "}
                             <button className="btn btn-danger" onClick={this.props.onDelete}>
                                 Delete
+                            </button> {" "}
+                            <button className="btn btn-danger" onClick={this.props.onView}>
+                                View2
                             </button>
                         </div>
                     </div>   
