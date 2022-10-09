@@ -58,4 +58,65 @@ const generateToken = (id) => {
     })
 }
 
+router.get("/", async(req,res) => {
+    try{
+         let user = await User.find();
+         return res
+             .status(200)
+             .send(user);
+    } catch(ex){
+     return res.status(500).send("Error", ex.message);
+    }
+ });
+ 
+ router.get("/:id", async(req,res) => {
+     let requesteName = req.params.id;
+     let user = await User.findById(requesteName); 
+     if(!user){
+         return res
+             .status(404)
+             .send({ message:"Outlet you are looking for does not exist."})
+     }
+     return res
+         .status(200)
+         .send(user);
+ });
+
+ router.delete("/:id", async(req,res) => {
+    let requestedID = req.params.id;
+    //let outletID = await Outlet.find({"outletID" : requestedOutlet})
+    try{
+        let user = await User.findByIdAndDelete(requestedID); 
+        if(!user){
+            return res
+                .status(400)
+                .send("Food you are looking for does not exist")
+        }
+        return res
+            .status(200)
+            .send({ message: "Successfully removed"});
+    }catch(ex){
+        return res
+            .status(500)
+            .send(ex.message);
+    }
+});
+
+router.put("/:id", async(req,res)=>{
+    let requestedID = req.params.id;
+    let user = await User.findById(requestedID);
+   
+    if(!user) {
+     return res
+        .status(404)
+        .send({ message:"Food you are looking for does not exist"})
+    }
+
+    user.set({name : req.body.name});
+    user = await user.save()
+    return res
+        .status(200)
+        .send(user)
+ });
+
 module.exports =  router

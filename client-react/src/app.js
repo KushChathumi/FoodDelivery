@@ -9,7 +9,8 @@ import SignUp from './components/signUp'
 import Order from './pages/orders';
 import Wishlist from './pages/wishlists';
 import AddOutlet from './pages/createOutlet';
-import AddFood from './pages/createFood'
+import AddFood from './pages/createFood';
+import Customer from './components/customers';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/wishlist" element = {<Wishlist />} />
             <Route path="/addoutlet" element = {<AddOutlet />} />
             <Route path="/addfood" element = {<AddFood />} />
+            <Route path="/user" element = {<Customer />} />
           </Routes>
       </Router>
     </div>
